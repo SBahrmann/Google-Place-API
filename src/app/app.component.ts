@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+
+import { Address } from './google-place-autocomplete.directive';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'GooglePlaceAPI';
+
+  address!: Address;
+
+  @ViewChild('autocompleteInput') autocompleteInput: any;
+
+  handleAddressChange(address: Address) {
+    console.log(address);
+    this.address = address;
+  }
 }

@@ -1,0 +1,38 @@
+<div style="padding: 1rem;">
+  <label for="addressSearch">Adress suche:</label>
+  <input id="addressSearch" name="address" google-places-autocomplete (onAddressChange)="handleAddressChange($event)"
+    style="height: 1.5rem;width: 100%;">
+</div>
+<div style="padding: 1rem;">
+  <span *ngIf="address?.name">{{address.name}}</span>
+  <br>
+  <span *ngIf="address?.formatted_address">{{address.formatted_address}}</span>
+  <br>
+  <span *ngIf="address?.formatted_phone_number">{{address.formatted_phone_number}}</span>
+  <br>
+  <span *ngIf="address?.international_phone_number">{{address.international_phone_number}}</span>
+  <br>
+  <span *ngIf="address?.website">{{address.website}}</span> <br>
+  <br>
+  <span *ngIf="address?.rating">Rating: {{address.rating}}</span> <br>
+  <br>
+  <br>
+
+  <h5 *ngIf="address?.opening_hours?.weekday_text">Öffnungszeiten</h5>
+  <div *ngIf="address?.opening_hours">
+    <div *ngFor="let day of address.opening_hours.weekday_text">{{day}}</div>
+  </div>
+
+  <h5 *ngIf="address?.reviews">Reviews</h5>
+  <div *ngIf="address?.reviews">
+    <div *ngFor="let review of address.reviews">
+      <a [href]="review.author_url">
+        <img [src]="review.profile_photo_url" alt="" height="50px">
+        {{review.author_name}}<br>
+      </a>
+      <span>{{review.text}}</span><br>
+      <span>Rating: {{review.rating}}</span><br>
+      <span>{{review.relative_time_description}}</span><br><br>
+    </div>
+  </div>
+</div>

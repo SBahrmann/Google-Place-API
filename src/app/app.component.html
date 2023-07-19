@@ -1,8 +1,9 @@
 <div style="padding: 1rem;">
-  <label for="addressSearch">Adress suche:</label>
+  <label for="addressSearch">Adresssuche:</label>
   <input id="addressSearch" name="address" google-places-autocomplete (onAddressChange)="handleAddressChange($event)"
     style="height: 1.5rem;width: 100%;">
 </div>
+
 <div style="padding: 1rem;">
   <span *ngIf="address?.name">{{address.name}}</span>
   <br>
